@@ -40,7 +40,7 @@
     />
     <!-- Umami Analytics -->
   </head>
-  <body class="font-poppins">
+  <body class="font-poppins scroll-smooth scroll-pt-20">
     <!-- Header -->
     <header>
       <nav
@@ -55,7 +55,7 @@
             class="w-16 h-16"
           /><span class="font-bold">Saúde Pública</span>
         </a>
-        <ul class="flex gap-4">
+        <ul class="hidden md:flex gap-4">
           <li>
             <a
               href="#home"
@@ -88,8 +88,48 @@
       </nav>
     </header>
     <!-- Main -->
-    <main></main>
+    <main>
+      <!-- Section Home -->
+      <section id="home" class="relative w-full h-screen">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/50 z-10"></div>
+        <!-- Imagem de fundo -->
+        <img
+          src="https://60mais.com.br/wp-content/uploads/2019/07/academias-ao-ar-livre-60mais-01.jpg"
+          alt="Foto principal"
+          class="object-cover w-full h-full"
+        />
+        <!-- Conteúdo da hero -->
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-20 animate-fade-in"
+        >
+          <h1 class="text-4xl md:text-6xl font-bold mb-2">
+            Academias Públicas de José de Freitas
+          </h1>
+          <p class="text-lg md:text-2xl mb-4">
+            Promovendo saúde e bem-estar para todos com atividades físicas
+            acessíveis.
+          </p>
+          <a
+            href="#academias"
+            class="inline-block bg-amarelo hover:bg-azul_escuro text-white font-bold p-3 rounded-full hover:scale-105 transition-all duration-300"
+            role="button"
+            aria-label="Ir para a seção de academias"
+            >Conheça nossas academias!
+          </a>
+        </div>
+      </section>
+      <!-- Section Sobre -->
+      <!-- Section Academias -->
+      <!-- Section Contato -->
+    </main>
     <!-- Footer -->
+    <footer class="bg-azul_escuro text-white p-4">
+      <p class="text-center">
+        &copy; 2023 Saúde Pública - PI. Todos os direitos reservados.
+      </p>
+    </footer>
+    <!-- Script -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
