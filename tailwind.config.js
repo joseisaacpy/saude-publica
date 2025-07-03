@@ -9,6 +9,9 @@ export default {
         azul_claro: "#577BC1",
         amarelo: "#FFEB00",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],
