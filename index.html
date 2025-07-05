@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,6 @@
       name="description"
       content="Site oficial das academias públicas de José de Freitas, promovendo saúde e bem-estar para todos com atividades físicas acessíveis."
     />
-
     <title>Saúde Pública - PI</title>
     <!-- Favicon -->
     <link
@@ -38,8 +37,14 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Lottie Files -->
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
     <!-- Umami Analytics -->
   </head>
+  <!-- Body com um padding top pra quando clicar nos links -->
   <body class="font-poppins scroll-smooth scroll-pt-20">
     <!-- Header -->
     <header>
@@ -47,7 +52,7 @@
         class="min-w-full flex items-center justify-between md:justify-around bg-azul_medio text-white p-4 shadow-md"
       >
         <a
-          href="#home"
+          href="#"
           class="flex items-center hover:scale-110 transition-all duration-300"
         >
           <img
@@ -120,8 +125,67 @@
         </div>
       </section>
       <!-- Section Sobre -->
+      <section id="sobre">
+        <!-- Container -->
+        <div>
+          <!-- Lottie Animation -->
+          <!-- Conteúdo -->
+        </div>
+      </section>
       <!-- Section Academias -->
+      <section id="academias" class="bg-slate-400">
+        <!-- Titulo -->
+        <h2
+          class="text-white text-2xl font-bold text-center p-2 md:text-3xl md:p-4"
+        >
+          Conheça nossas academias!
+          <i class="fa-solid fa-dumbbell text-amarelo"></i>
+        </h2>
+        <!-- Grade de academias -->
+        <div class="grid p-4 gap-2 grid-cols-1 md:gap-4 md:grid-cols-3">
+          <!-- Card 01 -->
+          <div
+            class="flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
+          >
+            <img
+              src="https://mobilidade.estadao.com.br/wp-content/uploads/2024/02/Foto-Alesp-e1707523338212.jpg"
+              alt="Academia 1"
+              class="w-full h-48 object-cover rounded"
+            />
+            <h3 class="text-2xl font-bold">
+              Academia 1 <i class="fa-solid fa-location-dot text-red-500"></i>
+            </h3>
+          </div>
+          <!-- Card 02 -->
+          <div
+            class="flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
+          >
+            <img
+              src="https://media.gazetadopovo.com.br/2009/10/56bebc88b4778f3440df69709d8719dc-full.jpg"
+              alt="Academia 2"
+              class="w-full h-48 object-cover rounded"
+            />
+            <h3 class="text-2xl font-bold">
+              Academia 2 <i class="fa-solid fa-location-dot text-red-500"></i>
+            </h3>
+          </div>
+          <!-- Card 03 -->
+          <div
+            class="flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
+          >
+            <img
+              src="https://pmt.pi.gov.br/wp-content/uploads/sites/34/2021/04/WhatsApp-Image-2021-04-23-at-11.13.05.jpeg"
+              alt="Academia 3"
+              class="w-full h-48 object-cover rounded"
+            />
+            <h3 class="text-2xl font-bold">
+              Academia 3 <i class="fa-solid fa-location-dot text-red-500"></i>
+            </h3>
+          </div>
+        </div>
+      </section>
       <!-- Section Contato -->
+      <section id="contato"></section>
     </main>
     <!-- Footer -->
     <footer class="bg-azul_escuro text-white p-4">
