@@ -2,6 +2,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import supabase from "./db/conexao.js"; // Traz o banco de dados
 // import adminRoutes from "./routes/adminRoutes.js";
 
 // Configurando o dotenv
@@ -20,7 +21,6 @@ app.use(express.urlencoded({ extended: true })); // Habilita o URL Encoded (Para
 app.get("/", (req, res) => {
   res.send("API rodando");
 });
-
 
 // Rota não encontrada
 app.use((req, res, next) => {
