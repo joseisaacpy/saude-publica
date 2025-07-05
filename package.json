@@ -1,0 +1,19 @@
+{
+  "name": "saude-publica",
+  "version": "1.0.0",
+  "description": "Sistema de saúde pública",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": ["saude", "publica", "node", "express"],
+  "author": "Seu Nome",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
