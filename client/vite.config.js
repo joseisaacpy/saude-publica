@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { resolve } from "path";
 
 export default defineConfig({
   server: {
@@ -10,8 +11,13 @@ export default defineConfig({
   build: {
     outDir: "dist",
     assetsDir: "assets",
-    cssCodeSplit: false, // Mantém todo CSS em um arquivo
+    cssCodeSplit: false,
     rollupOptions: {
+      input: {
+        main: resolve(process.cwd(), "index.html"),
+        form: resolve(process.cwd(), "form-page.html"),
+        notfound: resolve(process.cwd(), "404.html"),
+      },
       output: {
         manualChunks: undefined,
       },
