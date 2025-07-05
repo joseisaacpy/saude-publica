@@ -8,7 +8,9 @@
     "ngrok": "ngrok http 5173",
     "dev:ngrok": "concurrently \"vite\" \"ngrok http 5173\"",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:css": "tailwindcss -i ./src/style.css -o ./dist/assets/style.css --watch",
+    "build:all": "npm run build:css && npm run build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
