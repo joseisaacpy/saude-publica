@@ -64,41 +64,10 @@
         <ul class="hidden md:flex gap-4">
           <li>
             <a
-              href="#home"
+              href="/"
               class="block font-bold text-white hover:scale-105 hover:text-amarelo transition-all"
               >Home</a
             >
-          </li>
-          <li>
-            <a
-              href="#sobre"
-              class="block font-bold text-white hover:scale-105 hover:text-amarelo transition-all"
-              >Sobre</a
-            >
-          </li>
-          <li>
-            <a
-              href="#academias"
-              class="block font-bold text-white hover:scale-105 hover:text-amarelo transition-all"
-              >Academias</a
-            >
-          </li>
-          <li>
-            <a
-              href="#contato"
-              class="block font-bold text-white hover:scale-105 hover:text-amarelo transition-all"
-              >Contato</a
-            >
-          </li>
-          <!-- Aluno / Professor -->
-          <li>
-            <a
-              href="/cadastro"
-              class="flex items-center gap-1 font-bold text-white hover:scale-105 hover:text-amarelo transition-all"
-              ><i class="fa-solid fa-user-plus"></i>|<i
-                class="fa-solid fa-chalkboard-teacher"
-              ></i
-            ></a>
           </li>
         </ul>
       </nav>
@@ -169,6 +138,19 @@
               placeholder="Digite seu CREF"
             />
           </div>
+          <!-- Email  -->
+          <div>
+            <label for="email" class="text-sm font-semibold text-gray-700 mb-2">
+              E-mail
+            </label>
+            <input
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
+              placeholder="Digite seu E-mail"
+            />
+          </div>
 
           <!-- Data de Nascimento (Optional) -->
           <div>
@@ -182,6 +164,7 @@
               type="date"
               id="data_nascimento"
               name="data_nascimento"
+              required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
             />
           </div>
@@ -197,6 +180,7 @@
             <select
               id="sexo"
               name="sexo"
+              required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
             >
               <option value="" disabled selected>Selecione o sexo</option>
@@ -206,7 +190,7 @@
             </select>
           </div>
 
-          <!-- Telefone (Optional) -->
+          <!-- Telefone (Required) -->
           <div>
             <label
               for="telefone"
@@ -218,6 +202,7 @@
               type="tel"
               id="telefone"
               name="telefone"
+              required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
               placeholder="(11) 99999-9999"
             />
@@ -235,6 +220,7 @@
               type="text"
               id="endereco"
               name="endereco"
+              required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
               placeholder="Rua, número, complemento"
             />
@@ -253,6 +239,7 @@
                 type="text"
                 id="bairro"
                 name="bairro"
+                required
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
                 placeholder="Nome do bairro"
               />
@@ -268,6 +255,7 @@
                 type="text"
                 id="cidade"
                 name="cidade"
+                required
                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
                 placeholder="Nome da cidade"
               />
@@ -275,7 +263,7 @@
           </div>
 
           <!-- Academia (Optional) -->
-          <div>
+          <!-- <div>
             <label
               for="academia_id"
               class="block text-sm font-semibold text-gray-700 mb-2"
@@ -288,9 +276,9 @@
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
             >
               <option value="">Selecione a academia</option>
-              <!-- Opções serão carregadas dinamicamente -->
             </select>
-          </div>
+          </div> -->
+          <!-- Opções serão carregadas dinamicamente -->
 
           <!-- Botões de Ação -->
           <div class="flex flex-col sm:flex-row gap-4 pt-2">
@@ -318,6 +306,7 @@
         const tipoSelect = document.getElementById("tipo");
         const crefLabel = document.querySelector("label[for='cref']");
         const crefInput = document.getElementById("cref");
+
         // Adiciona evento de mudança no select
         tipoSelect.addEventListener("change", () => {
           // Se o valor selecionado for "professor", mostra o campo de CREF, se não, oculta
@@ -332,19 +321,154 @@
             crefInput.value = "";
           }
         });
+
+        // Elemento do formulário
+        const formElement = document.getElementById("cadForm");
+
+        formElement.addEventListener("submit", async (e) => {
+          // Evita o envio do formulário
+          e.preventDefault();
+
+          // Validação inicial do tipo
+          if (
+            !tipoSelect.value ||
+            (tipoSelect.value !== "professor" && tipoSelect.value !== "aluno")
+          ) {
+            alert("Por favor, selecione um tipo válido!");
+            return;
+          }
+
+          // Pega os dados do formulário
+          const dados = {
+            nome: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            data_nascimento: document.getElementById("data_nascimento").value,
+            endereco: document.getElementById("endereco").value,
+            bairro: document.getElementById("bairro").value,
+            cidade: document.getElementById("cidade").value,
+            cref: document.getElementById("cref").value,
+          };
+
+          // Define a rota baseada no tipo selecionado
+          const rota =
+            tipoSelect.value === "professor" ? "professores" : "alunos";
+
+          // Função para fazer o cadastro da pessoa (seja professor ou aluno)
+          const cadastroPessoa = async () => {
+            // Desabilita o botão de envio
+            const submitButton = formElement.querySelector(
+              'button[type="submit"]'
+            );
+
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = "Enviando...";
+
+            // Faz requisição POST
+            try {
+              const response = await fetch(`/${rota}`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dados),
+              });
+
+              // Verifica se a resposta foi bem-sucedida
+              if (!response.ok) {
+                // Tenta obter mais detalhes do erro
+                const errorData = await response.json().catch(() => null);
+                throw new Error(
+                  errorData?.message ||
+                    `Erro ${response.status}: ${response.statusText}`
+                );
+              }
+
+              // Processa a resposta de sucesso
+              const resultado = await response.json();
+              alert(
+                `${
+                  tipoSelect.value === "professor" ? "Professor" : "Aluno"
+                } cadastrado com sucesso!`
+              );
+              clearForm();
+
+              // Log para debug (opcional)
+              console.log("Cadastro realizado:", resultado);
+            } catch (error) {
+              console.error("Erro ao cadastrar:", error);
+
+              // Tratamento de erros mais específico
+              if (
+                error.name === "TypeError" &&
+                error.message.includes("fetch")
+              ) {
+                alert(
+                  "Erro de conexão. Verifique se o servidor está funcionando."
+                );
+              } else if (error.message.includes("400")) {
+                alert("Dados inválidos. Verifique os campos preenchidos.");
+              } else if (error.message.includes("409")) {
+                alert("Já existe um cadastro com esses dados.");
+              } else if (error.message.includes("500")) {
+                alert("Erro interno do servidor. Tente novamente mais tarde.");
+              } else {
+                alert(`Erro ao cadastrar: ${error.message}`);
+              }
+            } finally {
+              // Sempre reabilita o botão
+              submitButton.disabled = false;
+              submitButton.textContent = originalButtonText;
+            }
+          };
+
+          // Chama a função de cadastro
+          await cadastroPessoa();
+        });
       });
 
       // Função para limpar o formulário
       function clearForm() {
-        document.getElementById("cadForm").reset();
+        const formElement = document.getElementById("cadForm");
+        const crefLabel = document.querySelector("label[for='cref']");
+        const crefInput = document.getElementById("cref");
+
+        // Reset do formulário
+        formElement.reset();
+
+        // Oculta o campo CREF se estiver visível
+        if (!crefLabel.classList.contains("hidden")) {
+          crefLabel.classList.add("hidden");
+          crefInput.classList.add("hidden");
+          crefInput.removeAttribute("required");
+        }
       }
 
-      // Elemento do formulário
-      const formElement = document.getElementById("cadForm");
-      formElement.addEventListener("submit", async (e) => {
-        // Evita o envio do formulário
-        e.preventDefault();
-      });
+      // Função adicional para validar dados (opcional)
+      function validarDados(dados, tipo) {
+        const erros = [];
+
+        if (!dados.nome || dados.nome.trim() === "") {
+          erros.push("Nome é obrigatório");
+        }
+
+        if (!dados.email || dados.email.trim() === "") {
+          erros.push("Email é obrigatório");
+        } else if (!isValidEmail(dados.email)) {
+          erros.push("Email inválido");
+        }
+
+        if (tipo === "professor" && (!dados.cref || dados.cref.trim() === "")) {
+          erros.push("CREF é obrigatório para professores");
+        }
+
+        return erros;
+      }
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
     </script>
   </body>
 </html>
