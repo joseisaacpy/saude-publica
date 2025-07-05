@@ -2,6 +2,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import supabase from "./db/conexao.js"; // Traz o banco de dados
 // import adminRoutes from "./routes/adminRoutes.js";
 
@@ -9,6 +11,8 @@ import supabase from "./db/conexao.js"; // Traz o banco de dados
 dotenv.config();
 
 // Constantes
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
@@ -16,15 +20,24 @@ const PORT = 3000;
 app.use(cors()); // Habilita o CORS
 app.use(express.json()); // Habilita o JSON
 app.use(express.urlencoded({ extended: true })); // Habilita o URL Encoded (Para enviar formularios)
+// Servir arquivos estáticos do frontend buildado
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // Rotas
+// Rota para servir index.html em SPA
 app.get("/", (req, res) => {
-  res.send("API rodando");
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
+// Rota pra formularios
+app.get("/cadastro", (req, res) => {
+  res
+    .status(200)
+    .sendFile(path.join(__dirname, "../client/dist/form-page.html"));
 });
 
 // Rota não encontrada
 app.use((req, res, next) => {
-  res.status(404).json({ error: "Rota não encontrada" });
+  res.status(404).sendFile(path.join(__dirname, "../client/dist/404.html"));
 });
 
 // Iniciar servidor
