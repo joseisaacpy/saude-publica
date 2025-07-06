@@ -3,10 +3,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   server: {
-    allowedHosts: [
-      "all",
-      "b6dc-2804-29b8-519d-edd6-f8e6-d871-fec9-c760.ngrok-free.app",
-    ],
+    allowedHosts: ["all", "f9f7-187-19-169-200.ngrok-free.app"],
   },
   build: {
     outDir: "dist",

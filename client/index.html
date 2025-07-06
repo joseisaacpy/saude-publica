@@ -105,7 +105,7 @@
     <!-- Main -->
     <main>
       <!-- Section Home -->
-      <section id="home" class="relative w-full h-screen">
+      <section id="home" class="relative h-[80dvh] w-full md:h-screen">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/50 z-10"></div>
         <!-- Imagem de fundo -->
@@ -127,7 +127,7 @@
           </p>
           <a
             href="#academias"
-            class="inline-block bg-amarelo hover:bg-azul_escuro text-white font-bold p-3 rounded-full hover:scale-105 transition-all duration-300"
+            class="inline-block bg-azul_medio hover:bg-azul_escuro text-white font-bold p-3 rounded-full hover:scale-105 transition-all duration-300"
             role="button"
             aria-label="Ir para a seção de academias"
             >Conheça nossas academias!
@@ -135,7 +135,7 @@
         </div>
       </section>
       <!-- Section Sobre -->
-      <section id="sobre">
+      <section id="sobre" class="bg-gradient-to-b from-white to-slate-300">
         <!-- Container -->
         <div
           class="mx-auto p-3 flex flex-col md:flex-row items-center justify-center text-center"
@@ -152,16 +152,16 @@
           <!-- Div do conteudo -->
           <div class="w-full md:w-1/2">
             <!-- Conteúdo -->
-            <h2 class="text-3xl text-azul_medio font-bold mt-6 mb-4">
+            <h2 class="text-xl text-azul_medio font-bold mt-6 mb-4">
               Atividade física acessível para todos
             </h2>
-            <p class="text-lg text-gray-700 mb-4">
+            <p class="text-xl text-gray-700 mb-4">
               As academias públicas ao ar livre são uma iniciativa que promove
               saúde, bem-estar e inclusão social. Com equipamentos gratuitos e
               de fácil uso, qualquer pessoa pode se exercitar com segurança, sem
               depender de mensalidades ou deslocamentos longos.
             </p>
-            <p class="text-lg text-gray-600">
+            <p class="text-xl text-gray-600">
               Mantenha-se ativo, cuide do seu corpo e aproveite o que é seu por
               direito:
               <strong class="font-bold text-azul_medio"
@@ -173,7 +173,10 @@
         </div>
       </section>
       <!-- Section Academias -->
-      <section id="academias" class="bg-slate-700">
+      <section
+        id="academias"
+        class="bg-gradient-to-b from-slate-300 to-azul_escuro"
+      >
         <!-- Titulo -->
         <h2
           class="text-white text-2xl font-bold text-center p-2 md:text-3xl md:p-4"
@@ -225,7 +228,7 @@
         </div>
       </section>
       <!-- Section Contato -->
-      <section id="contato"></section>
+      <!-- <section id="contato"></section> -->
     </main>
     <!-- Footer -->
     <footer class="bg-azul_escuro text-white p-4">
