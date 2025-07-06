@@ -98,7 +98,7 @@
               name="nome"
               required
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
-              placeholder="Digite o nome completo do aluno"
+              placeholder="Digite seu nome completo"
             />
           </div>
 
@@ -342,19 +342,33 @@
           const dados = {
             nome: document.getElementById("nome").value,
             email: document.getElementById("email").value,
+            telefone: document.getElementById("telefone").value,
             data_nascimento: document.getElementById("data_nascimento").value,
+            sexo: document.getElementById("sexo").value,
             endereco: document.getElementById("endereco").value,
             bairro: document.getElementById("bairro").value,
             cidade: document.getElementById("cidade").value,
-            cref: document.getElementById("cref").value,
           };
+          // Somente adiciona o CREF se for professor
 
+          if (tipoSelect.value === "professor") {
+            const cref = document.getElementById("cref").value;
+
+            if (!cref || cref.trim() === "") {
+              alert("O campo CREF é obrigatório para professores.");
+              return;
+            }
+
+            dados.cref = cref;
+          }
           // Define a rota baseada no tipo selecionado
           const rota =
             tipoSelect.value === "professor" ? "professores" : "alunos";
 
           // Função para fazer o cadastro da pessoa (seja professor ou aluno)
           const cadastroPessoa = async () => {
+            console.log("📦 Dados a enviar:", dados);
+
             // Desabilita o botão de envio
             const submitButton = formElement.querySelector(
               'button[type="submit"]'
@@ -366,13 +380,26 @@
 
             // Faz requisição POST
             try {
-              const response = await fetch(`/${rota}`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(dados),
-              });
+              const data = document.getElementById("data_nascimento").value;
+
+              if (!isValidDate(data)) {
+                alert("Data de nascimento inválida.");
+                return;
+              }
+
+              // depois usa normalmente:
+              dados.data_nascimento = data;
+
+              const response = await fetch(
+                `http://localhost:3000/api/${rota}`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(dados),
+                }
+              );
 
               // Verifica se a resposta foi bem-sucedida
               if (!response.ok) {
@@ -457,6 +484,10 @@
         } else if (!isValidEmail(dados.email)) {
           erros.push("Email inválido");
         }
+        // validação antes do insert
+        if (!dados.sexo || dados.sexo.trim() === "") {
+          return res.status(400).json({ error: "Campo 'sexo' é obrigatório" });
+        }
 
         if (tipo === "professor" && (!dados.cref || dados.cref.trim() === "")) {
           erros.push("CREF é obrigatório para professores");
@@ -468,6 +499,16 @@
       function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+      }
+      function isValidDate(str) {
+        const data = new Date(str);
+        return (
+          str &&
+          /^\d{4}-\d{2}-\d{2}$/.test(str) &&
+          !isNaN(data.getTime()) &&
+          data.getFullYear() > 1900 &&
+          data.getFullYear() < 2100
+        );
       }
     </script>
   </body>
