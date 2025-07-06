@@ -42,6 +42,21 @@
       src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
       type="module"
     ></script>
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        ScrollReveal().reveal(".up", {
+          origin: "bottom",
+          distance: "80px",
+          duration: 1500,
+          delay: 200,
+          easing: "ease-in-out",
+          reset: false,
+        });
+      });
+    </script>
+
     <!-- Umami Analytics -->
   </head>
   <!-- Body com um padding top pra quando clicar nos links -->
@@ -188,7 +203,7 @@
         <div class="grid p-4 gap-2 grid-cols-1 md:p-6 md:gap-4 md:grid-cols-3">
           <!-- Card 01 -->
           <div
-            class="flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
+            class="up flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
           >
             <img
               src="https://mobilidade.estadao.com.br/wp-content/uploads/2024/02/Foto-Alesp-e1707523338212.jpg"
@@ -201,7 +216,7 @@
           </div>
           <!-- Card 02 -->
           <div
-            class="flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
+            class="up flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
           >
             <img
               src="https://media.gazetadopovo.com.br/2009/10/56bebc88b4778f3440df69709d8719dc-full.jpg"
@@ -214,7 +229,7 @@
           </div>
           <!-- Card 03 -->
           <div
-            class="flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
+            class="up flex gap-2 flex-col items-center justify-center p-2 bg-white shadow rounded hover:scale-105 transition-all duration-300"
           >
             <img
               src="https://pmt.pi.gov.br/wp-content/uploads/sites/34/2021/04/WhatsApp-Image-2021-04-23-at-11.13.05.jpeg"
