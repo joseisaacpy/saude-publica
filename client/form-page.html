@@ -407,16 +407,13 @@
               // depois usa normalmente:
               dados.data_nascimento = data;
 
-              const response = await fetch(
-                `http://localhost:3000/api/${rota}`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(dados),
-                }
-              );
+              const response = await fetch(`/api/${rota}`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dados),
+              });
 
               // Verifica se a resposta foi bem-sucedida
               if (!response.ok) {

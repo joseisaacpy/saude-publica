@@ -1,5 +1,5 @@
 // Imports
-import e, { Router } from "express";
+import { Router } from "express";
 import supabase from "../db/conexao.js";
 // Constantes
 const alunosRouter = Router();
