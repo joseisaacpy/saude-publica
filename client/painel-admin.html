@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel Admnistrativo</title>
+    <title>Painel Administrativo</title>
     <link rel="stylesheet" href="./src/style.css" />
     <!-- Favicon -->
     <link
@@ -95,6 +95,20 @@
       </div>
       <!-- Seção com cards informativos -->
       <section class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card de mensagem de boas vindas -->
+        <div
+          id="divMensagemBoasVindas"
+          class="transition-opacity duration-1000 opacity-100 bg-amarelo rounded-xl p-4 shadow-2xl flex flex-col text-center items-center justify-center"
+        >
+          <!-- Mensagem de boas vindas -->
+          <h1
+            id="mensagemBoasVindas"
+            class="text-lg font-semibold text-gray-800"
+          >
+            Seja bem-vindo ao painel administrativo!
+          </h1>
+        </div>
+
         <!-- Professores -->
         <div class="bg-white rounded-xl p-4 shadow-2xl flex flex-col gap-2">
           <div class="text-black text-3xl">
@@ -383,6 +397,41 @@
           </div>
                 `;
       }
+
+      // Função para definir a mensagem de boas vindas baseada no horário
+      const definirMensagem = () => {
+        // Pega o título que terá a mensagem de boas vindas
+        let divMensagem = document.getElementById("divMensagemBoasVindas");
+        let mensagemBoasVindas = divMensagem.querySelector("h1");
+        // Pega a hora atual
+        const horaAtual = new Date().getHours();
+        if (horaAtual >= 0 && horaAtual < 12) {
+          mensagemBoasVindas.textContent =
+            "Bom dia! Seja bem-vindo ao painel administrativo.";
+        } else if (horaAtual >= 12 && horaAtual < 18) {
+          mensagemBoasVindas.textContent =
+            "Boa tarde! Seja bem-vindo ao painel administrativo.";
+        } else {
+          mensagemBoasVindas.textContent =
+            "Boa noite! Seja bem-vindo ao painel administrativo.";
+        }
+        // Esconde a mensagem com 5seg
+        // Faz o fade-out
+        setTimeout(() => {
+          divMensagem.classList.remove("opacity-100");
+          divMensagem.classList.add("opacity-0");
+
+          // Espera o tempo da transição (1s) e remove do layout
+          setTimeout(() => {
+            divMensagem.classList.add("hidden");
+          }, 1000); // corresponde à duration-1000
+        }, 5000);
+      };
+
+      // Chama a função ao carregar a página
+      document.addEventListener("DOMContentLoaded", () => {
+        definirMensagem();
+      });
     </script>
   </body>
 </html>
