@@ -5,9 +5,8 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 import supabase from "./db/conexao.js"; // Traz o banco de dados
-import professoresRoutes from "./routes/professoresRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";
 import alunosRoutes from "./routes/alunosRoutes.js";
+import professoresRoutes from "./routes/professoresRoutes.js";
 import academiasRoutes from "./routes/academiasRoutes.js";
 import loginRoutes from "./routes/loginRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -27,12 +26,12 @@ app.use(express.json()); // Habilita o JSON
 app.use(express.urlencoded({ extended: true })); // Habilita o URL Encoded (Para enviar formularios)
 // Servir arquivos estáticos do frontend buildado
 app.use(express.static(path.join(__dirname, "../client/dist")));
-// Faz o uso das rotas
+// Faz o uso das rotas da pasta routes
 app.use("/api/professores", professoresRoutes);
 app.use("/api/academias", academiasRoutes);
-app.use("/api/admin", adminRoutes);
 app.use("/api/alunos", alunosRoutes);
 app.use("/login", loginRoutes);
+app.use("/admin", adminRoutes);
 
 // Rotas
 // Rota para servir index.html em SPA
