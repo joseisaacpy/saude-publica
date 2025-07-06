@@ -3,10 +3,10 @@ import { Router } from "express";
 import supabase from "../db/conexao.js";
 
 // Constantes
-const adminRouter = Router();
+const adminRoutes = Router();
 
 // Listar todos os admins
-adminRouter.get("/", async (req, res) => {
+adminRoutes.get("/", async (req, res) => {
   try {
     const result = await supabase.from("admin").select("*");
     if (result.error)
@@ -18,7 +18,7 @@ adminRouter.get("/", async (req, res) => {
 });
 
 // Obter um admin por ID
-adminRouter.get("/:id", async (req, res) => {
+adminRoutes.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const result = await supabase.from("admin").select("*").eq("id", id);
@@ -35,7 +35,7 @@ adminRouter.get("/:id", async (req, res) => {
 });
 
 // Criar admin
-adminRouter.post("/", async (req, res) => {
+adminRoutes.post("/", async (req, res) => {
   try {
     const dados = req.body;
     const result = await supabase.from("admin").insert(dados).select();
@@ -50,7 +50,7 @@ adminRouter.post("/", async (req, res) => {
 });
 
 // Atualizar admin
-adminRouter.put("/:id", async (req, res) => {
+adminRoutes.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const novosDados = req.body;
@@ -70,7 +70,7 @@ adminRouter.put("/:id", async (req, res) => {
 });
 
 // Deletar admin
-adminRouter.delete("/:id", async (req, res) => {
+adminRoutes.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const result = await supabase.from("admin").delete().eq("id", id);
@@ -83,4 +83,4 @@ adminRouter.delete("/:id", async (req, res) => {
 });
 
 // Exportação
-export default adminRouter;
+export default adminRoutes;

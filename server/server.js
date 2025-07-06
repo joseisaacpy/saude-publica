@@ -10,6 +10,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import alunosRoutes from "./routes/alunosRoutes.js";
 import academiasRoutes from "./routes/academiasRoutes.js";
 import loginRoutes from "./routes/loginRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 // Configurando o dotenv
 dotenv.config();
