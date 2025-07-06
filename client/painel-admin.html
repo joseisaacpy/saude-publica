@@ -199,17 +199,17 @@
         // Se não houver alunos cadastrados, mostra uma mensagem
         if (alunos.length === 0) {
           main.innerHTML = `
-        <table class=" text-center w-full border bg-white shadow rounded-lg overflow-hidden">
-          <caption>Alunos</caption>
+        <table class="text-left w-full border bg-white shadow rounded-lg table-auto border-collapse">
+          <caption class="border bg-gray-200 text-center font-semibold p-1">Alunos</caption>
           <thead>
             <tr class="bg-gray-200">
-              <th class="px-4 py-2 text-left">Nome</th>
-              <th class="px-4 py-2">Ações</th>
+              <th class="border px-4 py-2 text-left">Nome</th>
+              <th class="border px-4 py-2">Ações</th>
             </tr>
             </thead>
             <tbody>
               <tr class="border-t">
-                <td class="px-4 py-2">Nenhum aluno cadastrado</td>
+                <td class="border px-4 py-2">Nenhum aluno cadastrado</td>
                 </tr>
                 </tbody>
                 </table>
@@ -219,21 +219,21 @@
 
         main.innerHTML = `
         <div class="overflow-x-auto">
-          <table class=" text-center w-full border bg-white shadow rounded-lg overflow-hidden">
+          <table class="text-left w-full border bg-white shadow rounded-lg table-auto border-collapse">
             <caption class="border bg-gray-200 text-center font-semibold p-1">Alunos</caption>
           
           <thead>
             <tr class="bg-gray-200">
-              <th class="px-4 py-2 text-left">Nome</th>
-              <th class="px-4 py-2 text-left">Email</th>
-              <th class="px-4 py-2 text-left">Data de Nascimento</th>
-              <th class="px-4 py-2 text-left">Sexo</th>
-              <th class="px-4 py-2 text-left">Telefone</th>
-              <th class="px-4 py-2 text-left">Endereço</th>
-              <th class="px-4 py-2 text-left">Bairro</th>
-              <th class="px-4 py-2 text-left">Cidade</th>
-              <th class="px-4 py-2 text-left">Data de Cadastro</th>
-              <th class="px-4 py-2">Ações</th>
+              <th class="border px-4 py-2 text-left bg-slate-500 sticky left-0 z-10 text-white">Nome</th>
+              <th class="border px-4 py-2 text-left">Email</th>
+              <th class="border px-4 py-2 text-left">Data de Nascimento</th>
+              <th class="border px-4 py-2 text-left">Sexo</th>
+              <th class="border px-4 py-2 text-left">Telefone</th>
+              <th class="border px-4 py-2 text-left">Endereço</th>
+              <th class="border px-4 py-2 text-left">Bairro</th>
+              <th class="border px-4 py-2 text-left">Cidade</th>
+              <th class="border px-4 py-2 text-left">Data de Cadastro</th>
+              <th class="border px-4 py-2">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -241,16 +241,16 @@
               .map(
                 (aluno) => `
               <tr class="border-t">
-                <td class="px-4 py-2">${aluno.nome}</td>
-                <td class="px-4 py-2">${aluno.email}</td>
-                <td class="px-4 py-2">${aluno.data_nascimento}</td>
-                <td class="px-4 py-2">${aluno.sexo}</td>
-                <td class="px-4 py-2">${aluno.telefone}</td>
-                <td class="px-4 py-2">${aluno.endereco}</td>
-                <td class="px-4 py-2">${aluno.bairro}</td>
-                <td class="px-4 py-2">${aluno.cidade}</td>
-                <td class="px-4 py-2">${aluno.data_cadastro}</td>
-                <td class="px-4 py-2 text-center">
+                <td class="border px-4 py-2 bg-slate-500 sticky left-0 z-10 text-white font-semibold">${aluno.nome}</td>
+                <td class="border px-4 py-2">${aluno.email}</td>
+                <td class="border px-4 py-2">${aluno.data_nascimento}</td>
+                <td class="border px-4 py-2">${aluno.sexo}</td>
+                <td class="border px-4 py-2">${aluno.telefone}</td>
+                <td class="border px-4 py-2">${aluno.endereco}</td>
+                <td class="border px-4 py-2">${aluno.bairro}</td>
+                <td class="border px-4 py-2">${aluno.cidade}</td>
+                <td class="border px-4 py-2">${aluno.data_cadastro}</td>
+                <td class="border px-4 py-2 text-center">
                   <button class="text-blue-500 hover:underline" onclick="editarAluno('${aluno.id}')"><i class="fas fa-edit"></i></button>
                   <button class="text-red-500 hover:underline ml-2" onclick="deletarAluno('${aluno.id}')"><i class="fas fa-trash"></i></button>
                   </td>
@@ -271,16 +271,16 @@
         if (professores.length === 0) {
           main.innerHTML = `
         <h2 class="text-xl font-bold mb-4">Professores</h2>
-        <table class=" text-center w-full border bg-white shadow rounded-lg overflow-hidden">
+        <table class=" text-left w-full border bg-white shadow rounded-lg ">
           <thead>
             <tr class="bg-gray-200">
-              <th class="px-4 py-2 text-left">Nome</th>
-              <th class="px-4 py-2">Ações</th>
+              <th class="border px-4 py-2 text-left bg-slate-500 sticky left-0 z-10 text-white font-semibold">Nome</th>
+              <th class="border px-4 py-2">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-t">
-                <td class="px-4 py-2">Nenhum professor cadastrado</td>
+                <td class="border px-4 py-2">Nenhum professor cadastrado</td>
             </tr>
           </tbody>
         </table>
@@ -290,42 +290,42 @@
 
         main.innerHTML = `
         <div class="overflow-x-auto">
-          <table class=" text-center w-full border bg-white shadow rounded-lg text-center overflow-hidden">
+          <table class=" text-left w-full border bg-white shadow rounded-lg text-center ">
                         <caption class="border bg-gray-200 text-center font-semibold p-1">Professores</caption>
             <thead>
               <tr class="bg-gray-200">
-                 <th class="px-4 py-2 text-left">Nome</th>
-              <th class="px-4 py-2 text-left">Email</th>
-              <th class="px-4 py-2 text-left">CREF</th>
-              <th class="px-4 py-2 text-left">Data de Nascimento</th>
-              <th class="px-4 py-2 text-left">Sexo</th>
-              <th class="px-4 py-2 text-left">Telefone</th>
-              <th class="px-4 py-2 text-left">Endereço</th>
-              <th class="px-4 py-2 text-left">Bairro</th>
-              <th class="px-4 py-2 text-left">Cidade</th>
-              <th class="px-4 py-2 text-left">Data de Cadastro</th>
-                <th class="px-4 py-2">Ações</th>
+                 <th class="border px-4 py-2 text-left bg-slate-500 sticky left-0 z-10 text-white font-semibold">Nome</th>
+              <th class="border px-4 py-2 text-left">Email</th>
+              <th class="border px-4 py-2 text-left">CREF</th>
+              <th class="border px-4 py-2 text-left">Data de Nascimento</th>
+              <th class="border px-4 py-2 text-left">Sexo</th>
+              <th class="border px-4 py-2 text-left">Telefone</th>
+              <th class="border px-4 py-2 text-left">Endereço</th>
+              <th class="border px-4 py-2 text-left">Bairro</th>
+              <th class="border px-4 py-2 text-left">Cidade</th>
+              <th class="border px-4 py-2 text-left">Data de Cadastro</th>
+                <th class="border px-4 py-2">Ações</th>
               </tr>
             </thead>
             <tbody>
               ${professores
                 .map(
-                  (professores) => `
+                  (professor) => `
                 <tr class="border-t">
-                                  <td class="px-4 py-2">${professores.nome}</td>
-                <td class="px-4 py-2">${professores.email}</td>
-                <td class="px-4 py-2">${professores.cref}</td>
-                <td class="px-4 py-2">${professores.data_nascimento}</td>
-                <td class="px-4 py-2">${professores.sexo}</td>
-                <td class="px-4 py-2">${professores.telefone}</td>
-                <td class="px-4 py-2">${professores.endereco}</td>
-                <td class="px-4 py-2">${professores.bairro}</td>
-                <td class="px-4 py-2">${professores.cidade}</td>
-                <td class="px-4 py-2">${professores.data_cadastro}</td>
+                                  <td class="border px-4 py-2 bg-slate-500 sticky left-0 z-10 text-white font-semibold">${professor.nome}</td>
+                <td class="border px-4 py-2 ">${professor.email}</td>
+                <td class="border px-4 py-2">${professor.cref}</td>
+                <td class="border px-4 py-2">${professor.data_nascimento}</td>
+                <td class="border px-4 py-2">${professor.sexo}</td>
+                <td class="border px-4 py-2">${professor.telefone}</td>
+                <td class="border px-4 py-2">${professor.endereco}</td>
+                <td class="border px-4 py-2">${professor.bairro}</td>
+                <td class="border px-4 py-2">${professor.cidade}</td>
+                <td class="border px-4 py-2">${professor.data_cadastro}</td>
 
-                  <td class="px-4 py-2 text-center">
-                    <button class="text-blue-500 hover:underline" onclick="editarProfessor('${professores.id}')"><i class="fas fa-edit"></i></button>
-                    <button class="text-red-500 hover:underline ml-2" onclick="deletarProfessor('${professores.id}')"><i class="fas fa-trash"></i></button>
+                  <td class="border px-4 py-2 text-center">
+                    <button class="text-blue-500 hover:underline" onclick="editarProfessor('${professor.id}')"><i class="fas fa-edit"></i></button>
+                    <button class="text-red-500 hover:underline ml-2" onclick="deletarProfessor('${professor.id}')"><i class="fas fa-trash"></i></button>
                   </td>
                 </tr>
               `
@@ -344,16 +344,16 @@
         if (academias.length === 0) {
           main.innerHTML = `
         <h2 class="text-xl font-bold mb-4">Academias</h2>
-        <table class="text-center w-full border bg-white shadow rounded-lg overflow-hidden">
+        <table class="text-left w-full border bg-white shadow rounded-lg overflow-hidden">
           <thead>
             <tr class="bg-gray-200">
-              <th class="px-4 py-2 text-left">Nome</th>
-              <th class="px-4 py-2">Ações</th>
+              <th class="border px-4 py-2 text-left">Nome</th>
+              <th class="border px-4 py-2">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-t">
-                <td class="px-4 py-2">Nenhuma academia cadastrada</td>
+                <td class="border px-4 py-2">Nenhuma academia cadastrada</td>
             </tr>
           </tbody>
         </table>
@@ -364,15 +364,15 @@
         main.innerHTML = `
 
         <div class="overflow-x-auto">
-          <table class="text-center w-full border bg-white shadow rounded-lg overflow-hidden">
+          <table class="text-left w-full border bg-white shadow rounded-lg table-auto border-collapse">
                         <caption class="border bg-gray-200 text-center font-semibold p-1">Academias</caption>
             <thead>
               <tr class="bg-gray-200">
-                <th class="px-4 py-2 text-left">Nome</th>
-                <th class="px-4 py-2 text-left">Endereço</th>
-                <th class="px-4 py-2 text-left">Bairro</th>
-                <th class="px-4 py-2 text-left">Cidade</th>
-                <th class="px-4 py-2">Ações</th>
+                <th class="border px-4 py-2 text-left bg-slate-500 sticky left-0 z-10 text-white font-semibold ">Nome</th>
+                <th class="border px-4 py-2 text-left">Endereço</th>
+                <th class="border px-4 py-2 text-left">Bairro</th>
+                <th class="border px-4 py-2 text-left">Cidade</th>
+                <th class="border px-4 py-2">Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -380,11 +380,11 @@
                 .map(
                   (academia) => `
                 <tr class="border-t">
-                  <td class="px-4 py-2">${academia.nome}</td>
-                  <td class="px-4 py-2">${academia.rua}</td>
-                  <td class="px-4 py-2">${academia.bairro}</td>
-                  <td class="px-4 py-2">${academia.cidade}</td>
-                  <td class="px-4 py-2 text-center">
+                  <td class="border px-4 py-2 bg-slate-500 sticky left-0 z-10 text-white font-semibold">${academia.nome}</td>
+                  <td class="border px-4 py-2">${academia.rua}</td>
+                  <td class="border px-4 py-2">${academia.bairro}</td>
+                  <td class="border px-4 py-2">${academia.cidade}</td>
+                  <td class="border px-4 py-2 text-center">
                     <button class="text-blue-500 hover:underline" onclick="editarProfessor('${academia.id}')"><i class="fas fa-edit"></i></button>
                     <button class="text-red-500 hover:underline ml-2" onclick="deletarProfessor('${academia.id}')"><i class="fas fa-trash"></i></button>
                   </td>
