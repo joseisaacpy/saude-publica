@@ -135,7 +135,7 @@
               name="cref"
               required
               class="hidden w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out"
-              placeholder="Exemplo: 'CREF 12345-G/PE'"
+              placeholder="Informe o CREF completo, como no documento (ex: 12345-G/PI)"
             />
           </div>
           <!-- Email  -->
@@ -301,6 +301,23 @@
     </main>
     <script type="module" src="./src/main.js"></script>
     <script>
+      // Função para validar o email
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Função para validar a data
+      function isValidDate(str) {
+        const data = new Date(str);
+        return (
+          str &&
+          /^\d{4}-\d{2}-\d{2}$/.test(str) &&
+          !isNaN(data.getTime()) &&
+          data.getFullYear() > 1900 &&
+          data.getFullYear() < 2100
+        );
+      }
       // Ao carregar o DOM, pega os elementos do formulário que serão ocultos
       document.addEventListener("DOMContentLoaded", () => {
         const tipoSelect = document.getElementById("tipo");
@@ -324,7 +341,7 @@
 
         // Elemento do formulário
         const formElement = document.getElementById("cadForm");
-
+        // Adiciona evento de envio do form
         formElement.addEventListener("submit", async (e) => {
           // Evita o envio do formulário
           e.preventDefault();
@@ -349,8 +366,8 @@
             bairro: document.getElementById("bairro").value,
             cidade: document.getElementById("cidade").value,
           };
-          // Somente adiciona o CREF se for professor
 
+          // Somente adiciona o CREF se for professor
           if (tipoSelect.value === "professor") {
             const cref = document.getElementById("cref").value;
 
@@ -367,7 +384,7 @@
 
           // Função para fazer o cadastro da pessoa (seja professor ou aluno)
           const cadastroPessoa = async () => {
-            console.log("📦 Dados a enviar:", dados);
+            // console.log("📦 Dados a enviar:", dados);
 
             // Desabilita o botão de envio
             const submitButton = formElement.querySelector(
@@ -416,12 +433,12 @@
               alert(
                 `${
                   tipoSelect.value === "professor" ? "Professor" : "Aluno"
-                } cadastrado com sucesso!`
+                } cadastrado com sucesso!\nAguarde, pois teremos novidades...`
               );
               clearForm();
 
               // Log para debug (opcional)
-              console.log("Cadastro realizado:", resultado);
+              // console.log("Cadastro realizado:", resultado);
             } catch (error) {
               console.error("Erro ao cadastrar:", error);
 
@@ -457,6 +474,7 @@
       // Função para limpar o formulário
       function clearForm() {
         const formElement = document.getElementById("cadForm");
+
         const crefLabel = document.querySelector("label[for='cref']");
         const crefInput = document.getElementById("cref");
 
@@ -494,21 +512,6 @@
         }
 
         return erros;
-      }
-
-      function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      }
-      function isValidDate(str) {
-        const data = new Date(str);
-        return (
-          str &&
-          /^\d{4}-\d{2}-\d{2}$/.test(str) &&
-          !isNaN(data.getTime()) &&
-          data.getFullYear() > 1900 &&
-          data.getFullYear() < 2100
-        );
       }
     </script>
   </body>
