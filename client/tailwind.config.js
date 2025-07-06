@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./form-page.html",
     "./404.html",
+    "./painel-admin.html",
     "./public/**/*.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],

@@ -17,6 +17,7 @@ export default defineConfig({
         main: resolve(process.cwd(), "index.html"),
         form: resolve(process.cwd(), "form-page.html"),
         notfound: resolve(process.cwd(), "404.html"),
+        admin: resolve(process.cwd(), "painel-admin.html"),
       },
       output: {
         manualChunks: undefined,

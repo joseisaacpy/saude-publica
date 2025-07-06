@@ -31,7 +31,7 @@ app.use("/api/professores", professoresRoutes);
 app.use("/api/academias", academiasRoutes);
 app.use("/api/alunos", alunosRoutes);
 app.use("/login", loginRoutes);
-app.use("/admin", adminRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Rotas
 // Rota para servir index.html em SPA
