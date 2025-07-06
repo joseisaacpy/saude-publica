@@ -9,6 +9,7 @@ import professoresRoutes from "./routes/professoresRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import alunosRoutes from "./routes/alunosRoutes.js";
 import academiasRoutes from "./routes/academiasRoutes.js";
+import loginRoutes from "./routes/loginRoutes.js";
 
 // Configurando o dotenv
 dotenv.config();
@@ -30,6 +31,7 @@ app.use("/api/professores", professoresRoutes);
 app.use("/api/academias", academiasRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/alunos", alunosRoutes);
+app.use("/login", loginRoutes);
 
 // Rotas
 // Rota para servir index.html em SPA
