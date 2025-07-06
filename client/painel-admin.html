@@ -93,7 +93,7 @@
         <!-- Mensagem de carregamento -->
         <span class="font-bold animate-pulse mt-4 text-2xl">Carregando...</span>
       </div>
-      <!-- Section com cards informativos -->
+      <!-- Seção com cards informativos -->
       <section class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Professores -->
         <div class="bg-white rounded-xl p-4 shadow-2xl flex flex-col gap-2">
@@ -131,8 +131,14 @@
           <h2 class="text-2xl font-bold" id="admin-count">0</h2>
         </div>
       </section>
+      <!-- Seção das tabelas -->
+      <section id="main-content" class="p-4">
+        <!-- Aqui o JS vai injetar as tabelas, formulários, etc -->
+      </section>
     </main>
+    <!-- Carrega o style -->
     <script type="module" src="./src/main.js"></script>
+
     <script>
       // Base da URL, mas será alterada de acordo com o ambiente (railway ou localhost)
       const baseURL = "http://localhost:3000/api";
@@ -152,10 +158,204 @@
         }
       };
 
+      // Chama a função para cada rota
       fetchCount("professores", "professores-count");
       fetchCount("alunos", "alunos-count");
       fetchCount("academias", "academias-count");
       fetchCount("admin", "admin-count");
+
+      // Carrega as tabelas
+      const main = document.getElementById("main-content");
+
+      document
+        .getElementById("btn-alunos")
+        .addEventListener("click", carregarAlunos);
+      document
+        .getElementById("btn-professores")
+        .addEventListener("click", carregarProfessores);
+      document
+        .getElementById("btn-academias")
+        .addEventListener("click", carregarAcademias);
+
+      // Função para carregar alunos
+      async function carregarAlunos() {
+        const response = await fetch("http://localhost:3000/api/alunos");
+        const alunos = await response.json();
+
+        // Se não houver alunos cadastrados, mostra uma mensagem
+        if (alunos.length === 0) {
+          main.innerHTML = `
+        <table class="w-full border bg-white shadow rounded-lg overflow-hidden">
+          <caption>Alunos</caption>
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2 text-left">Nome</th>
+              <th class="px-4 py-2">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t">
+                <td class="px-4 py-2">Nenhum aluno cadastrado</td>
+                </tr>
+                </tbody>
+                </table>
+                `;
+          return;
+        }
+
+        main.innerHTML = `
+        <div class="overflow-x-auto">
+          <table class="w-full border bg-white shadow rounded-lg overflow-hidden">
+            <caption>Alunos</caption>
+          
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2 text-left">Nome</th>
+              <th class="px-4 py-2 text-left">Email</th>
+              <th class="px-4 py-2 text-left">Data de Nascimento</th>
+              <th class="px-4 py-2 text-left">Sexo</th>
+              <th class="px-4 py-2 text-left">Telefone</th>
+              <th class="px-4 py-2 text-left">Endereço</th>
+              <th class="px-4 py-2 text-left">Bairro</th>
+              <th class="px-4 py-2 text-left">Cidade</th>
+              <th class="px-4 py-2 text-left">Data de Cadastro</th>
+              <th class="px-4 py-2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${alunos
+              .map(
+                (aluno) => `
+              <tr class="border-t">
+                <td class="px-4 py-2">${aluno.nome}</td>
+                <td class="px-4 py-2">${aluno.email}</td>
+                <td class="px-4 py-2">${aluno.data_nascimento}</td>
+                <td class="px-4 py-2">${aluno.sexo}</td>
+                <td class="px-4 py-2">${aluno.telefone}</td>
+                <td class="px-4 py-2">${aluno.endereco}</td>
+                <td class="px-4 py-2">${aluno.bairro}</td>
+                <td class="px-4 py-2">${aluno.cidade}</td>
+                <td class="px-4 py-2">${aluno.data_cadastro}</td>
+                <td class="px-4 py-2 text-center">
+                  <button class="text-blue-500 hover:underline" onclick="editarAluno('${aluno.id}')"><i class="fas fa-edit"></i></button>
+                  <button class="text-red-500 hover:underline ml-2" onclick="deletarAluno('${aluno.id}')"><i class="fas fa-trash"></i></button>
+                  </td>
+                  </tr>
+                  `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+      `;
+      }
+      // Função para carregar professores
+      async function carregarProfessores() {
+        const response = await fetch("http://localhost:3000/api/professores");
+        const professores = await response.json();
+        // Se não houver academias cadastradas, mostra uma mensagem
+        if (professores.length === 0) {
+          main.innerHTML = `
+        <h2 class="text-xl font-bold mb-4">Professores</h2>
+        <table class="w-full border bg-white shadow rounded-lg overflow-hidden">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2 text-left">Nome</th>
+              <th class="px-4 py-2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+                <td class="px-4 py-2">Nenhum professor cadastrado</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+          return;
+        }
+
+        main.innerHTML = `
+        <h2 class="text-xl font-bold mb-4">Professores</h2>
+        <table class="w-full border bg-white shadow rounded-lg overflow-hidden">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2 text-left">Nome</th>
+              <th class="px-4 py-2 text-left">Email</th>
+              <th class="px-4 py-2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${professores
+              .map(
+                (professores) => `
+              <tr class="border-t">
+                <td class="px-4 py-2">${professores.nome}</td>
+                <td class="px-4 py-2">${professores.email}</td>
+                <td class="px-4 py-2 text-center">
+                  <button class="text-blue-500 hover:underline" onclick="editarProfessor('${professores.id}')"><i class="fas fa-edit"></i></button>
+                  <button class="text-red-500 hover:underline ml-2" onclick="deletarProfessor('${professores.id}')"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      `;
+      }
+      // Função para carregar professores
+      async function carregarAcademias() {
+        const response = await fetch("http://localhost:3000/api/academias");
+        const academias = await response.json();
+        // Se não houver academias cadastradas, mostra uma mensagem
+        if (academias.length === 0) {
+          main.innerHTML = `
+        <h2 class="text-xl font-bold mb-4">Academias</h2>
+        <table class="w-full border bg-white shadow rounded-lg overflow-hidden">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2 text-left">Nome</th>
+              <th class="px-4 py-2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+                <td class="px-4 py-2">Nenhuma academia cadastrada</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+          return;
+        }
+
+        main.innerHTML = `
+        <h2 class="text-xl font-bold mb-4">academias</h2>
+        <table class="w-full border bg-white shadow rounded-lg overflow-hidden">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2 text-left">Nome</th>
+              <th class="px-4 py-2">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${academias
+              .map(
+                (academia) => `
+              <tr class="border-t">
+                <td class="px-4 py-2">${academia.nome}</td>
+                <td class="px-4 py-2">${academia.email}</td>
+                <td class="px-4 py-2 text-center">
+                  <button class="text-blue-500 hover:underline" onclick="editarProfessor('${academia.id}')"><i class="fas fa-edit"></i></button>
+                  <button class="text-red-500 hover:underline ml-2" onclick="deletarProfessor('${academia.id}')"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      `;
+      }
     </script>
   </body>
 </html>
