@@ -3,7 +3,16 @@ import { resolve } from "path";
 
 export default defineConfig({
   server: {
-    allowedHosts: ["all", "f9f7-187-19-169-200.ngrok-free.app"],
+    host: true, // permite acesso externo (0.0.0.0)
+    port: 5173, // pode definir a porta desejada
+    cors: true, // ativa CORS
+    origin: "http://localhost:5173", // ou o domínio do ngrok, se necessário
+    allowedHosts: [
+      "all",
+      "localhost",
+      "127.0.0.1",
+      "6d27b5113ad6.ngrok-free.app",
+    ],
   },
   build: {
     outDir: "dist",

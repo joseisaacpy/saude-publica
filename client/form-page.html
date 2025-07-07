@@ -46,16 +46,45 @@
     <link rel="stylesheet" href="./src/style.css" />
   </head>
   <!-- Body com um padding top pra quando clicar nos links -->
+
   <body
     class="font-poppins scroll-pt-20 bg-gradient-to-br from-slate-100 to-slate-400"
   >
+    <!-- Menu Mobile -->
+    <div
+      id="header-mobile"
+      class="hidden fixed inset-0 bg-black/90 justify-center items-center z-[100]"
+    >
+      <!-- Nav -->
+      <nav>
+        <!-- Botão de fechar o menu -->
+        <button
+          id="btn-close-menu"
+          class="absolute top-4 right-4 text-white text-3xl"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- Menu de navegação -->
+        <ul id="menu" class="flex gap-6 flex-col items-center justify-center">
+          <li>
+            <a
+              href="/"
+              class="block font-bold p-2 text-3xl text-white hover:text-amarelo transition"
+              >Home</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
     <!-- Header -->
     <header>
+      <!-- Nav -->
       <nav
         class="min-w-full flex items-center justify-between md:justify-around bg-azul_medio text-white p-4 shadow-md"
       >
+        <!-- Logo -->
         <a
-          href="/"
+          href="#"
           class="flex items-center hover:scale-110 transition-all duration-300"
         >
           <img
@@ -63,7 +92,14 @@
             class="w-16 h-16"
           /><span class="font-bold hidden md:block">Saúde Pública</span>
         </a>
-        <ul class="hidden md:flex gap-4">
+        <!-- Botão do menu (hambúrguer) -->
+        <button id="btn-menu" class="md:hidden text-2xl focus:outline-none">
+          ☰
+        </button>
+        <!-- Menu de navegação -->
+        <ul
+          class="hidden gap-6 md:gap-4 md:flex flex-col items-center md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-azul_medio md:bg-transparent pb-4 md:p-0 z-50 transition-all"
+        >
           <li>
             <a
               href="/"
@@ -513,5 +549,6 @@
         return erros;
       }
     </script>
+    <script type="module" src="./src/menu.js"></script>
   </body>
 </html>
