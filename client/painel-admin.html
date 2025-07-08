@@ -155,7 +155,7 @@
 
     <script>
       // Base da URL, mas será alterada de acordo com o ambiente (railway ou localhost)
-      const baseURL = "http://localhost:3000/api";
+      const baseURL = "/api";
       const loader = document.getElementById("loader");
       // Função pra pegar quantidade de elementos da API
       const fetchCount = async (rota, idElemento) => {
@@ -193,7 +193,7 @@
 
       // Função para carregar alunos
       async function carregarAlunos() {
-        const response = await fetch("http://localhost:3000/api/alunos");
+        const response = await fetch("/api/alunos");
         const alunos = await response.json();
 
         // Se não houver alunos cadastrados, mostra uma mensagem
@@ -265,7 +265,7 @@
       }
       // Função para carregar professores
       async function carregarProfessores() {
-        const response = await fetch("http://localhost:3000/api/professores");
+        const response = await fetch("/api/professores");
         const professores = await response.json();
         // Se não houver academias cadastradas, mostra uma mensagem
         if (professores.length === 0) {
@@ -338,7 +338,7 @@
       }
       // Função para carregar professores
       async function carregarAcademias() {
-        const response = await fetch("http://localhost:3000/api/academias");
+        const response = await fetch("/api/academias");
         const academias = await response.json();
         // Se não houver academias cadastradas, mostra uma mensagem
         if (academias.length === 0) {
